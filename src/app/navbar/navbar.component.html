@@ -1,0 +1,19 @@
+
+<div class="col-md-2 sidebar" *ngIf="authService.isLoggedIn">
+  <h2>Gemeente Bernheze</h2>
+  <ul>
+      <hr>
+    <li routerLink="/home">Dashboard</li>
+    <hr>
+    <li routerLink="/kcc">KCC overzicht</li>
+    <hr>
+    <li routerLink="/web">Web overizchten</li>
+    <hr>
+    <li routerLink="/add">Callcenter</li>
+    <hr>
+    <a (click)="authService.SignOut()">
+      <li >Log uit</li>
+    </a>
+    <hr>
+  </ul>
+</div>

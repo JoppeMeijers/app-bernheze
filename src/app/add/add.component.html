@@ -1,0 +1,41 @@
+<div class="col-md-10 main">
+  <div class="row">
+    <div class="col-md-12 title-bar">
+      <h3>Meeting callcenter</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 block">
+      <form #p="ngForm" (ngSubmit)="add(p.value)">
+        <div class="form-group col-md-12 background-form">
+          <label for="subject">Vraag over:</label><br>
+          <select ngModel required name="subject" id="subject" class="form-control">
+            <option value="wmo">WMO</option>
+            <option value="afspraak maken">Afspraak maken</option>
+            <option value="doorverbinden">Doorverbinden</option>
+            <option value="afval">Afval (buitendienst)</option>
+            <option value="openbareruimte">Meldingen openbare ruimte</option>
+            <option value="klachten">Klachten</option>
+            <option value="wonen">Wonen</option>
+            <option value="mileu">Mileu</option>
+            <option value="burgerzaken">Burgerzaken</option>
+            <option value="overig">Overig</option>
+          </select>
+        </div>
+        <div class="form-group col-md-12 background-form">
+          <label for="type">Type:</label><br>
+          <select ngModel required name="type" id="type" class="form-control">
+            <option value="inwoner">Inwoner</option>
+            <option value="zakelijk">Zakelijk</option>
+          </select>
+        </div>
+        <div class="form-group col-md-12 background-form">
+          <label for="description">Optionele beschrijving:</label><br>
+          <textarea ngModel name="description" id="description" class="form-control"></textarea>
+        </div>
+        <button class="btn btn-add-client" [disabled]="!p.valid">Opslaan</button>
+        </form>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+.authBlock{
+    
+    width: 50%;
+    background-color: rgba(0,0,0,0.5);
+    margin: 20% 25%;
+    padding: 5% 5%;
+    color: white;
+    border-bottom-color: white;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+}
+
+.authBlock button{
+    color: black;
+}
+
+.authBlock input[type=text],.authBlock input[type=password],.authBlock input[type=email]{
+    margin-top: 2%;
+    width: 80%;
+    color: black;
+    border-radius: 5px;
+    padding: 2% 3%;
+    border-color: none;
+    border-width: 0;
+}
+
+.authBlock input[type=button]{
+    margin-top: 2%;
+    width: 20%;
+    color: white;
+    background-color: #6CAC22;
+}

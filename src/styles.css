@@ -1,0 +1,140 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body{
+    background-color: #6CAC22!important;
+}
+.equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+  }
+.main{
+    margin-left: 18%;
+    margin-top: 3%;
+}
+.title-bar{
+    background-color: rgb(71, 110, 26);
+    color: white;
+    padding: 3px 3px 10px 30px;
+}
+
+.block{
+    background-color: white;
+ 
+    padding: 20px 20px;
+    color: white;
+}
+
+
+.highlited-number{
+    font-size: 50pt;
+    font-weight: 600;
+}
+
+.text-align-left{
+    text-align: left;
+}
+
+.align-right-list{
+    margin-left: 45%;
+}
+
+.newClient{
+    margin-top: 5%;
+}
+
+.background-form, .background-form-area{
+    padding: 2% 2%;
+    color: black;
+}
+
+.background-form input[type=text], .background-form input[type=email],.background-form input[type=tel],.background-form-area textarea{
+    background-color: transparent;
+    color: white;
+}
+
+.background-form{
+    width: 48%;
+    margin-left:1%;
+    margin-right: 1%;
+}
+
+.background-form-area{
+    width: 98%;
+    margin-left:1%;
+    margin-right: 1%;
+}
+
+.btn-add-client{
+    margin-left: 1%;
+    background-color: #6CAC22;
+    color: white;
+    border-radius: 0px;
+}
+
+.btn-add-client:hover{
+    color: #D1D1D1;
+}
+
+.btn-blue{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    background-color: #38AEED;
+    color: white;
+    border-radius: 0px;
+}
+
+.btn-blue-look{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 11%;
+    background-color: #38AEED;
+    color: white;
+    border-radius: 0px;
+}
+
+.btn-blue:hover,.btn-blue-look:hover{
+    color: #D1D1D1;
+}
+
+.client-blocks{
+    margin-top: 2%;
+    background-color: #393838;
+    border-style: solid;
+    border-color: #646363;
+    border-width: 2px;
+    padding: 15px 15px;
+    color: white;
+    text-align: left;
+}
+
+.client-blocks table{
+    margin-top: 18px;
+}
+
+.client-blocks table td a{
+    color: white;
+}
+
+.client-blocks table td a:hover{
+    color: blue;
+}
+
+.client-blocks table td{
+    padding-left: 20px;
+}
+
+.new-project{
+    background-color:    #393838;
+    padding: 15px 15px;
+    color: white;
+    text-align: left;
+}
+canvas{
+    color: white;
+}
