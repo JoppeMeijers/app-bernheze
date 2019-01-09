@@ -1,3 +1,4 @@
+<div  *ngIf="allData && allCivilians"></div>
 <div class="col-md-10 main">
     <div class="row">
       <div class="col-md-12 title-bar">
@@ -5,8 +6,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 block">
-          <canvas id="PhonevisitorsChart" ></canvas>
+      <div class="col-md-12 block" >
+        <div>
+          <canvas id="PhonevisitorsChart"></canvas>
+        </div>
       </div>
       <div class="col-md-12 block">
           <canvas id="bar-chart-visitsubjectsphone"></canvas>

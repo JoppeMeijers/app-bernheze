@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Chart } from 'chart.js'
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { callLifecycleHooksChildrenFirst } from '@angular/core/src/view/provider';
@@ -10,16 +10,74 @@ import { QuestionService } from '../question.service';
   templateUrl: './kcc.component.html',
   styleUrls: ['./kcc.component.css']
 })
-export class KccComponent implements OnInit {
-  businessDateGraph;
+export class KccComponent implements OnInit, AfterViewInit {
+
     lineChart;
     barChart;
-
+    public allData :any[];
+    public allCivilians: any[];
+    businessDateGraph;
+    civilianGraph;
+    Phonesinwoners;
+    Phoneszakelijk;
+    PhonevisitorsData;
   	/*Aantal telefoontjes per dag */
+    
+
+questions;
+    questionsRef: AngularFireList<any>;
+  questions$: Observable<any[]>;
+    size;
+    filterBusiness;
+    filterCivilian;
+   
+  constructor(public db: AngularFireDatabase, public questionSerivce: QuestionService) {
+    
+   }
+   
+ 
+  ngOnInit(){
+
+    
+    this.getAllData();
+    this.getAllCivilians()
+   
+  }
+
+  getAllData()
+  {
+      this.questionSerivce.getAllData().subscribe(res => this.getData(res));
+       
+  }
+
+  getAllCivilians(){
+    this.questionSerivce.getAllCivilians().subscribe(cev => this.getCivilian(cev));
+  }
+
+  getData(res){
+    this.businessDateGraph = res;
+    console.log(this.businessDateGraph);
+  }
+
+  getCivilian(cev){
+    this.civilianGraph = cev;
+    console.log(this.civilianGraph);
+  }
   
-    Phonesinwoners = {
+
+  ngAfterViewInit():void{
+    console.log(this.businessDateGraph);
+        this.drawChart();
+    
+  }
+
+  drawChart(){
+   
+    setTimeout(() =>{
+
+      this.Phonesinwoners = {
         label: "Telefoontjes inwoners",
-        data: [120, 112, 77, 67, 101],
+        data: this.civilianGraph,
         lineTension: 0.3,
         fill: false,
         borderColor: '#4C781A',
@@ -33,7 +91,7 @@ export class KccComponent implements OnInit {
         pointStyle: 'rect'
       };
     
-   Phoneszakelijk = {
+   this.Phoneszakelijk = {
         label: "Telefoontjes zakelijk",
         data: this.businessDateGraph,
         lineTension: 0.3,
@@ -48,39 +106,12 @@ export class KccComponent implements OnInit {
         pointBorderWidth: 2
       };
     
-    PhonevisitorsData = {
+    this.PhonevisitorsData = {
       labels: ["19 novemer", "20 november", "21 november", "22 november", "23 novmeber"],
       datasets: [this.Phonesinwoners, this.Phoneszakelijk]
     };
 
-
-questions;
-    questionsRef: AngularFireList<any>;
-  questions$: Observable<any[]>;
-    size;
-    filterBusiness;
-    filterCivilian;
-
-  constructor(public db: AngularFireDatabase, public questionSerivce: QuestionService) {
-
-   }
-   
- 
-  ngOnInit(){
-    this.questionsRef = this.db.list('/Questions');
-    this.questions$ = this.questionsRef.valueChanges();
-    this.questions$.subscribe(res=> {
-      this.size = res.length;
-      this.filterBusiness = res.filter(res => res.desc === 'zakelijk');
-      this.filterCivilian = res.filter(res => res.desc === 'inwoner');
-    });
-
-    this.questionSerivce.getAllData().then(data => {
-      console.log(data);
-    })
-    
-
-    
+      
     this.lineChart = new Chart('PhonevisitorsChart', {
       type: 'line',
       data: this.PhonevisitorsData,
@@ -95,7 +126,7 @@ questions;
         }
       }
     });	
-
+   
     /*Onderwerp telefoontjes */
 this.barChart = new Chart('bar-chart-visitsubjectsphone', {
   type: 'bar',
@@ -120,7 +151,10 @@ this.barChart = new Chart('bar-chart-visitsubjectsphone', {
     }
   }
 });
+}, 10000)
   }
+
+
 
 
 }

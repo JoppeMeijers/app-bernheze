@@ -10,7 +10,8 @@ import {formatDate } from '@angular/common';
 })
 export class QuestionService{
 
-  
+  civiliansRef: AngularFireList<any>;
+  civilians$: Observable<any[]>;
   businessRef: AngularFireList<any>;
   business$: Observable<any[]>;
   idQuestion;
@@ -32,17 +33,19 @@ export class QuestionService{
     this.jstoday = formatDate(this.today, 'dd-MM-yyyy', 'en-US', '+1'); 
 }
 
-  getAllData(){
+ 
+getAllData(){
+ 
+  this.businessRef = this.db.list('/types/business');
+  this.business$ = this.businessRef.valueChanges();  
+  return this.business$;
+}
 
-   this.businessRef = this.db.list('/types/business');
-   this.business$ = this.businessRef.valueChanges();  
-    this.business$.subscribe(businessData=> {
-      this.businessData = businessData;
-      console.log(this.businessData);
-    });
-  }
-
-
+getAllCivilians(){
+  this.civiliansRef = this.db.list('/types/civilian');
+  this.civilians$ = this.civiliansRef.valueChanges(); 
+  return this.civilians$;
+}
 
 
   add(newQuestion){
