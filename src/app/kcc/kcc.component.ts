@@ -151,7 +151,7 @@ this.barChart = new Chart('bar-chart-visitsubjectsphone', {
     }
   }
 });
-}, 10000)
+}, 1000)
   }
 
 
